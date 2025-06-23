@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberGuard Hub - Protecting Your Digital Future</title>
+    <title>Security Best Practices - CyberGuard Hub</title>
     <style>
         * {
             margin: 0;
@@ -45,6 +45,8 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            text-decoration: none;
+            color: white;
         }
 
         .logo::before {
@@ -65,7 +67,7 @@
             transition: color 0.3s ease;
         }
 
-        nav a:hover {
+        nav a:hover, nav a.active {
             color: #f97316;
         }
 
@@ -80,28 +82,27 @@
             margin-top: 80px;
         }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #1e3a8a 0%, #0d9488 100%);
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #0d9488 0%, #059669 100%);
             color: white;
-            padding: 4rem 0;
+            padding: 3rem 0;
             text-align: center;
             position: relative;
-            overflow: hidden;
         }
 
-        .hero::before {
+        .page-header::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="shield" width="15" height="15" patternUnits="userSpaceOnUse"><path d="M7.5,2 L12,6 L7.5,13 L3,6 Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23shield)"/></svg>');
             opacity: 0.3;
         }
 
-        .hero-content {
+        .page-header-content {
             max-width: 800px;
             margin: 0 auto;
             padding: 0 2rem;
@@ -109,24 +110,259 @@
             z-index: 1;
         }
 
-        .hero-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .hero h1 {
+        .page-header h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
             font-weight: 700;
         }
 
-        .hero p {
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Best Practices Sections */
+        .practices-section {
+            padding: 4rem 0;
+        }
+
+        .practice-item {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .practice-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .practice-content {
+            display: flex;
+            align-items: center;
+            min-height: 300px;
+        }
+
+        .practice-content.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .practice-image {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #f1f5f9, #e2e8f0);
+            font-size: 8rem;
+            position: relative;
+        }
+
+        .practice-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 0%, rgba(13, 148, 136, 0.1) 100%);
+        }
+
+        .practice-text {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .practice-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1e3a8a;
+            font-weight: 600;
+        }
+
+        .practice-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #4b5563;
+        }
+
+        .practice-tips {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #0d9488;
+        }
+
+        .practice-tips h3 {
+            color: #0d9488;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .practice-tips ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .practice-tips li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+            color: #374151;
+        }
+
+        .practice-tips li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #059669;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Interactive Checklist */
+        .checklist-section {
+            background: white;
+            padding: 4rem 0;
+            margin: 2rem 0;
+        }
+
+        .checklist-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .checklist-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1e3a8a;
+        }
+
+        .checklist-container p {
+            font-size: 1.1rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .checklist {
+            text-align: left;
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #e5e7eb;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        .checklist-item:hover {
+            background: rgba(13, 148, 136, 0.05);
+            padding-left: 1rem;
+            border-radius: 8px;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 1rem;
+            accent-color: #0d9488;
+            cursor: pointer;
+        }
+
+        .checklist-item label {
+            font-size: 1.1rem;
+            color: #374151;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .checklist-item input[type="checkbox"]:checked + label {
+            color: #059669;
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        /* Progress Indicator */
+        .progress-container {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e5e7eb;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0d9488, #059669);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .progress-text {
+            font-size: 1.1rem;
+            color: #374151;
+        }
+
+        /* Call to Action */
+        .final-cta {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0d9488 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="success" width="25" height="25" patternUnits="userSpaceOnUse"><circle cx="12.5" cy="12.5" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23success)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.9;
@@ -148,107 +384,6 @@
             background: #ea580c;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
-        }
-
-        /* Services Section */
-        .services {
-            padding: 4rem 0;
-            background: white;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .services-grid {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .service-card {
-            flex: 1;
-            text-align: center;
-            padding: 2rem;
-            background: #f8fafc;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: #0d9488;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #1e3a8a;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #1e3a8a;
-        }
-
-        /* Featured Section */
-        .featured {
-            padding: 4rem 0;
-            background: linear-gradient(45deg, #f8fafc 0%, #e2e8f0 100%);
-        }
-
-        .featured-content {
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-        }
-
-        .featured-image {
-            flex: 1;
-            position: relative;
-        }
-
-        .featured-image::before {
-            content: "⚠️";
-            font-size: 8rem;
-            display: block;
-            text-align: center;
-            opacity: 0.8;
-        }
-
-        .featured-text {
-            flex: 1;
-        }
-
-        .featured h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #1e3a8a;
-        }
-
-        .featured p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .learn-more {
-            color: #0d9488;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .learn-more:hover {
-            color: #1e3a8a;
         }
 
         /* Footer */
@@ -297,17 +432,26 @@
                 display: none;
             }
 
-            .hero h1 {
+            .page-header h1 {
                 font-size: 2rem;
             }
 
-            .services-grid {
+            .practice-content {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .practice-content.reverse {
                 flex-direction: column;
             }
 
-            .featured-content {
-                flex-direction: column;
-                text-align: center;
+            .practice-image {
+                font-size: 5rem;
+                padding: 1.5rem;
+            }
+
+            .practice-text h2 {
+                font-size: 1.5rem;
             }
 
             .footer-content {
@@ -325,20 +469,20 @@
         }
 
         @media (max-width: 480px) {
-            .hero-icon {
-                font-size: 3rem;
-            }
-
-            .hero h1 {
+            .page-header h1 {
                 font-size: 1.8rem;
             }
 
-            .service-card {
+            .practice-text {
                 padding: 1.5rem;
             }
 
-            .featured h2 {
+            .final-cta h2 {
                 font-size: 2rem;
+            }
+
+            .checklist {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -346,12 +490,12 @@
 <body>
     <header>
         <div class="header-container">
-            <div class="logo">CyberGuard Hub</div>
+            <a href="index.html" class="logo">CyberGuard Hub</a>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="threats.html">Cyber Threats</a></li>
-                    <li><a href="practices.html">Best Practices</a></li>
+                    <li><a href="practices.html" class="active">Best Practices</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -360,50 +504,150 @@
     </header>
 
     <main>
-        <section class="hero">
-            <div class="hero-content">
-                <div class="hero-icon">🔐</div>
-                <h1>Protecting Your Digital Future</h1>
-                <p>Stay ahead of cyber threats with expert guidance, cutting-edge insights, and practical security solutions for individuals and businesses.</p>
-                <a href="#services" class="cta-button">Explore Security Solutions</a>
+        <section class="page-header">
+            <div class="page-header-content">
+                <h1>Security Best Practices</h1>
+                <p>Essential strategies and techniques to protect your digital assets and maintain strong cybersecurity posture</p>
             </div>
         </section>
 
-        <section id="services" class="services">
+        <section class="practices-section">
             <div class="container">
-                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: #1e3a8a;">Our Security Focus Areas</h2>
-                <p style="text-align: center; font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">Comprehensive cybersecurity solutions tailored to your needs</p>
-                
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">🔍</div>
-                        <h3>Threat Detection</h3>
-                        <p>Advanced monitoring and early warning systems to identify potential security threats before they impact your systems.</p>
+                <div class="practice-item">
+                    <div class="practice-content">
+                        <div class="practice-image">🔐</div>
+                        <div class="practice-text">
+                            <h2>Password Security</h2>
+                            <p>Strong passwords are your first line of defense against unauthorized access. A robust password strategy can prevent most common attacks and protect your sensitive accounts from compromise.</p>
+                            <p>Password security goes beyond just creating complex passwords – it involves understanding how to manage them effectively and recognizing when they may be compromised.</p>
+                            <div class="practice-tips">
+                                <h3>Essential Password Guidelines:</h3>
+                                <ul>
+                                    <li>Use unique passwords for every account</li>
+                                    <li>Create passwords with at least 12 characters</li>
+                                    <li>Include uppercase, lowercase, numbers, and symbols</li>
+                                    <li>Avoid personal information and dictionary words</li>
+                                    <li>Use a reputable password manager</li>
+                                    <li>Enable password breach monitoring</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="service-card">
-                        <div class="service-icon">🛡️</div>
-                        <h3>Data Protection</h3>
-                        <p>Comprehensive data encryption, backup solutions, and access controls to keep your sensitive information secure.</p>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-content reverse">
+                        <div class="practice-image">📱</div>
+                        <div class="practice-text">
+                            <h2>Two-Factor Authentication</h2>
+                            <p>Two-factor authentication (2FA) adds an extra layer of security by requiring a second form of verification beyond your password. This significantly reduces the risk of unauthorized access even if your password is compromised.</p>
+                            <p>Modern 2FA methods include SMS codes, authenticator apps, hardware tokens, and biometric verification, each offering different levels of security and convenience.</p>
+                            <div class="practice-tips">
+                                <h3>2FA Implementation Best Practices:</h3>
+                                <ul>
+                                    <li>Enable 2FA on all critical accounts</li>
+                                    <li>Use authenticator apps over SMS when possible</li>
+                                    <li>Keep backup codes in a secure location</li>
+                                    <li>Consider hardware security keys for high-value accounts</li>
+                                    <li>Regularly review and update 2FA settings</li>
+                                    <li>Educate team members on 2FA importance</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="service-card">
-                        <div class="service-icon">🌐</div>
-                        <h3>Network Security</h3>
-                        <p>Robust firewall configurations, VPN solutions, and network monitoring to protect your digital infrastructure.</p>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-content">
+                        <div class="practice-image">🔄</div>
+                        <div class="practice-text">
+                            <h2>Software Updates</h2>
+                            <p>Keeping software updated is crucial for maintaining security. Updates often include patches for newly discovered vulnerabilities that could be exploited by attackers to gain unauthorized access to your systems.</p>
+                            <p>Delaying updates leaves your systems vulnerable to known exploits, while timely updates ensure you have the latest security protections and performance improvements.</p>
+                            <div class="practice-tips">
+                                <h3>Update Management Strategy:</h3>
+                                <ul>
+                                    <li>Enable automatic updates for operating systems</li>
+                                    <li>Regularly update all installed applications</li>
+                                    <li>Keep browsers and plugins current</li>
+                                    <li>Update firmware on routers and IoT devices</li>
+                                    <li>Test updates in non-production environments first</li>
+                                    <li>Maintain an inventory of all software assets</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="featured">
+        <section class="checklist-section">
             <div class="container">
-                <div class="featured-content">
-                    <div class="featured-image"></div>
-                    <div class="featured-text">
-                        <h2>Latest Cyber Threat Alert</h2>
-                        <p>Recent studies show a 300% increase in ransomware attacks targeting small businesses. Our security experts have identified key vulnerabilities and developed comprehensive protection strategies to keep your organization safe.</p>
-                        <p>Learn about the latest attack vectors, prevention methods, and response protocols that can make the difference between a minor incident and a major data breach.</p>
-                        <a href="threats.html" class="learn-more">Learn More About Threats →</a>
+                <div class="checklist-container">
+                    <h2>Security Assessment Checklist</h2>
+                    <p>Track your cybersecurity improvements with this interactive checklist. Check off items as you implement them to monitor your security posture.</p>
+                    
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <input type="checkbox" id="item1">
+                            <label for="item1">Install and configure antivirus software on all devices</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="item2">
+                            <label for="item2">Set up automatic software updates</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="item3">
+                            <label for="item3">Enable two-factor authentication on critical accounts</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="item4">
+                            <label for="item4">Use a password manager for all accounts</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="item5">
+                            <label for="item5">Configure firewall settings properly</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="item6">
+                            <label for="item6">Create regular data backups</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="item7">
+                            <label for="item7">Review and update privacy settings on social media</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="item8">
+                            <label for="item8">Secure your home Wi-Fi network</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="item9">
+                            <label for="item9">Implement email security best practices</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="item10">
+                            <label for="item10">Educate family or team members about cybersecurity</label>
+                        </div>
                     </div>
+
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span id="progressText">0 of 10 completed (0%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Secure Your Data?</h2>
+                    <p>Take the first step towards better cybersecurity. Our experts are here to help you implement these best practices and develop a comprehensive security strategy.</p>
+                    <a href="index.html#contact" class="cta-button">Get Security Consultation</a>
                 </div>
             </div>
         </section>
@@ -417,26 +661,4 @@
                     <a href="index.html">Home</a>
                     <a href="threats.html">Cyber Threats</a>
                     <a href="practices.html">Best Practices</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <div class="footer-section">
-                    <h3>Resources</h3>
-                    <a href="#">Security Blog</a>
-                    <a href="#">Threat Intelligence</a>
-                    <a href="#">Security Tools</a>
-                    <a href="#">Training</a>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact Info</h3>
-                    <a href="mailto:info@cyberguardhub.com">info@cyberguardhub.com</a>
-                    <a href="tel:+1234567890">+1 (234) 567-8900</a>
-                    <a href="#">Live Chat Support</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 CyberGuard Hub. All rights reserved. | Privacy Policy | Terms of Service</p>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+                    <a href="#contact">Contact
