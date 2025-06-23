@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Threats Guide - CyberGuard Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #f8fafc;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0d9488 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo::before {
+            content: "🛡️";
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: #f97316;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #dc2626 0%, #f97316 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="danger" width="20" height="20" patternUnits="userSpaceOnUse"><polygon points="10,2 18,16 2,16" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23danger)"/></svg>');
+            opacity: 0.2;
+        }
+
+        .page-header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Threats Grid */
+        .threats-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .threats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .threat-card {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .threat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #dc2626, #f97316);
+        }
+
+        .threat-card:hover {
+            transform: translateY(-5px);
+            border-color: #dc2626;
+            box-shadow: 0 15px 35px rgba(220, 38, 38, 0.1);
+        }
+
+        .threat-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .threat-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #dc2626;
+            font-weight: 600;
+        }
+
+        .threat-card p {
+            margin-bottom: 1rem;
+            color: #4b5563;
+            line-height: 1.7;
+        }
+
+        .severity-indicator {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .severity-high {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+
+        .severity-medium {
+            background: #fef3c7;
+            color: #d97706;
+            border: 1px solid #fed7aa;
+        }
+
+        .severity-critical {
+            background: #1f2937;
+            color: #f97316;
+            border: 1px solid #374151;
+        }
+
+        .threat-details {
+            margin-top: 1rem;
+        }
+
+        .threat-details h4 {
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .threat-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .threat-details li {
+            padding: 0.25rem 0;
+            color: #6b7280;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .threat-details li::before {
+            content: "•";
+            color: #f97316;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Statistics Section */
+        .stats-section {
+            background: linear-gradient(45deg, #1e3a8a 0%, #0d9488 100%);
+            color: white;
+            padding: 4rem 0;
+            margin: 2rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #f97316;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: #f8fafc;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1e3a8a;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #6b7280;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #0d9488;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(13, 148, 136, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #0f766e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(13, 148, 136, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #f97316;
+        }
+
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .threats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .header-container {
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .threat-card {
+                padding: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-item h3 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">CyberGuard Hub</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="threats.html" class="active">Cyber Threats</a></li>
+                    <li><a href="practices.html">Best Practices</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">☰</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="page-header-content">
+                <h1>Common Cyber Threats</h1>
+                <p>Understanding the digital dangers that target individuals and organizations in today's interconnected world</p>
+            </div>
+        </section>
+
+        <section class="threats-section">
+            <div class="container">
+                <div class="threats-grid">
+                    <div class="threat-card">
+                        <span class="threat-icon">🦠</span>
+                        <div class="severity-indicator severity-critical">Critical</div>
+                        <h3>Malware</h3>
+                        <p>Malicious software designed to infiltrate, damage, or gain unauthorized access to computer systems. Includes viruses, worms, trojans, and spyware.</p>
+                        <div class="threat-details">
+                            <h4>Common Attack Vectors:</h4>
+                            <ul>
+                                <li>Email attachments and links</li>
+                                <li>Infected downloads and software</li>
+                                <li>USB drives and removable media</li>
+                                <li>Compromised websites</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="threat-card">
+                        <span class="threat-icon">🎣</span>
+                        <div class="severity-indicator severity-high">High</div>
+                        <h3>Phishing</h3>
+                        <p>Fraudulent attempts to obtain sensitive information by disguising as trustworthy entities in electronic communications, often through fake emails or websites.</p>
+                        <div class="threat-details">
+                            <h4>Warning Signs:</h4>
+                            <ul>
+                                <li>Urgent or threatening language</li>
+                                <li>Suspicious sender addresses</li>
+                                <li>Generic greetings</li>
+                                <li>Requests for personal information</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="threat-card">
+                        <span class="threat-icon">🔒</span>
+                        <div class="severity-indicator severity-critical">Critical</div>
+                        <h3>Ransomware</h3>
+                        <p>Malicious software that encrypts files or locks computer systems, demanding payment for restoration. Often spreads through networks causing widespread damage.</p>
+                        <div class="threat-details">
+                            <h4>Prevention Strategies:</h4>
+                            <ul>
+                                <li>Regular system backups</li>
+                                <li>Updated security software</li>
+                                <li>Employee training</li>
+                                <li>Network segmentation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="threat-card">
+                        <span class="threat-icon">👥</span>
+                        <div class="severity-indicator severity-high">High</div>
+                        <h3>Social Engineering</h3>
+                        <p>Psychological manipulation techniques used to trick people into divulging confidential information or performing actions that compromise security.</p>
+                        <div class="threat-details">
+                            <h4>Common Techniques:</h4>
+                            <ul>
+                                <li>Pretexting and impersonation</li>
+                                <li>Baiting with attractive offers</li>
+                                <li>Tailgating and physical access</li>
+                                <li>Authority and urgency tactics</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="threat-card">
+                        <span class="threat-icon">⛈️</span>
+                        <div class="severity-indicator severity-medium">Medium</div>
+                        <h3>DDoS Attacks</h3>
+                        <p>Distributed Denial of Service attacks overwhelm servers with traffic from multiple sources, making services unavailable to legitimate users.</p>
+                        <div class="threat-details">
+                            <h4>Impact Areas:</h4>
+                            <ul>
+                                <li>Website and service availability</li>
+                                <li>Business operations disruption</li>
+                                <li>Revenue and reputation loss</li>
+                                <li>Customer trust degradation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="threat-card">
+                        <span class="threat-icon">💾</span>
+                        <div class="severity-indicator severity-critical">Critical</div>
+                        <h3>Data Breaches</h3>
+                        <p>Unauthorized access to confidential data, often resulting in theft of personal information, financial records, or intellectual property.</p>
+                        <div class="threat-details">
+                            <h4>Common Causes:</h4>
+                            <ul>
+                                <li>Weak authentication systems</li>
+                                <li>Unpatched software vulnerabilities</li>
+                                <li>Insider threats and misuse</li>
+                                <li>Poor data encryption practices</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem;">Cybersecurity by the Numbers</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>4.1B</h3>
+                        <p>Records breached in 2024</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>300%</h3>
+                        <p>Increase in ransomware attacks</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>$4.5M</h3>
+                        <p>Average cost of a data breach</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>43%</h3>
+                        <p>Of attacks target small businesses</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Protect Yourself Today</h2>
+                    <p>Don't wait until it's too late. Learn essential security practices to safeguard your digital life and business operations.</p>
+                    <a href="practices.html" class="cta-button">View Security Best Practices</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="threats.html">Cyber Threats</a>
+                    <a href="practices.html">Best Practices</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <a href="#">Security Blog</a>
+                    <a href="#">Threat Intelligence</a>
+                    <a href="#">Security Tools</a>
+                    <a href="#">Training</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <a href="mailto:info@cyberguardhub.com">info@cyberguardhub.com</a>
+                    <a href="tel:+1234567890">+1 (234) 567-8900</a>
+                    <a href="#">Live Chat Support</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CyberGuard Hub. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
